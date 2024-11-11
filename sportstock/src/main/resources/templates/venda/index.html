@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<link rel="stylesheet" href="css/style.css">
+<head th:include="layout :: head"></head>
+
+<body>
+    <nav th:replace="layout :: menu"></nav>
+    <main class="container">
+       <h2 style="text-align: center;">Controle de saída</h2>
+  
+        <table class=" table table-bordered  table-light" >
+            <thead>
+                <tr>
+                    <th>Data da Venda</th>
+                    <th>Comprador</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="umaVenda : ${listaVendas}">
+                    <td th:text="${umaVenda.data}"></th>
+                    <td th:text="${umaVenda.comprador?.nome}"></td>
+                    <td th:text="${#aggregates.sum(umaVenda.listaItens.![getValorFinal])}"></td>
+
+                </tr>
+            </tbody>
+        </table>
+        <div class="d-flex justify-content-start mb-3">
+            <a href="/vendas/novo" class="btn btn-primary me-2">Novo</a>
+            <a href="/home" class="btn btn-secondary">Voltar para a Home</a>
+        </div>
+    </main>
+    <footer th:include="layout :: footer"></footer>
+</body>
+
+</html>

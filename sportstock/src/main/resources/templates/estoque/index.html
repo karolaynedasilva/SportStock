@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head th:include="layout :: head">
+    <link rel="stylesheet" href="/path/to/your/custom.css">
+</head>
+<body>
+<nav th:replace="layout :: menu"></nav>
+
+<main class="container" style="min-height: 485px;">
+    <div class="card border-light mb-3" style="padding: 10px; margin-top: 10%;">
+        <section>
+            <h2 style="border-bottom: 2px solid #3E8AFF; margin-bottom: 20px; margin-top: 0; ">Controle Geral</h2>
+            <div class="card-deck">
+                <div class="card-estoque border-primary mb-3">
+                    <div class="card-header">Funcionários</div>
+                    <div class="card-body">
+                        <h6 class="card-title text-center">Quantidade Atual</h6>
+                        <p class="card-text text-center">
+                            <span style="font-size: 40px;" th:text="${estoque.qtd_funcionario}"></span>
+                        </p>
+                    </div>
+                </div>
+                <div class="card-estoque border-danger mb-3">
+                    <div class="card-header">Franquiados</div>
+                    <div class="card-body">
+                        <h6 class="card-title text-center">Quantidade Atual</h6>
+                        <p class="card-text text-center">
+                            <span style="font-size: 40px;" th:text="${estoque.qtd_franquiado}"></span>
+                        </p>
+                    </div>
+                </div>
+                <div class="card-estoque border-success mb-3">
+                    <div class="card-header">Produtos</div>
+                    <div class="card-body">
+                        <h6 class="card-title text-center">Quantidade Atual</h6>
+                        <p class="card-text text-center">
+                            <span style="font-size: 40px;" th:text="${estoque.qtd_produto}"></span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <div class="d-flex justify-content-start mb-3">
+      <a href="/home" class="btn btn-secondary">Voltar para a Home</a>
+  </div>
+</main>
+
+<footer th:include="layout :: footer"></footer>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head th:include="layout :: head"></head>
+<body>
+    <nav th:replace="layout :: menu"></nav>
+    <main class="container"> 
+        <h2>Controle de Produtos:</h2>
+
+        <table class="table table-bordered table-light" id="tabprodutos">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Marca</th>
+                    <th>Tipo</th>
+                    <th>Valor</th>
+                    <th>Editar</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="umProduto : ${listaProdutos}">
+                    <td th:text="${umProduto.id}" ></td>
+                    <td th:text="${umProduto.marca}" ></td>
+                    <td th:text="${umProduto.tipo}" ></td>
+                    <td th:text="${umProduto.valor}" ></td>
+                    <td >
+                        <a th:href="@{'/produtos/alterar/' + ${umProduto.id}}" class="btn btn-warning">Alterar</a>
+                        <button class="btn btn-danger js-delete" th:data-id="${umProduto.id}">Excluir</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Agrupando os botões "Novo" e "Voltar" abaixo da tabela, com "Novo" primeiro -->
+        <div class="d-flex justify-content-start mb-3">
+            <a href="/produtos/novo" class="btn btn-primary me-2">Novo</a>
+            <a href="/home" class="btn btn-secondary">Voltar para a Home</a>
+        </div>
+        
+    </main>
+    <div class="modal" tabindex="-1" id="modalproduto">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Excluir Produto</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Confirma a exclusão do Produto?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" id="btnnao" data-bs-dismiss="modal">Não</button>
+                    <button type="button" class="btn btn-primary" id="btnsim">Sim</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer th:include="layout :: footer"></footer>
+    <script th:src="@{/scriptprod.js}"></script>
+
+</body>
+</html>

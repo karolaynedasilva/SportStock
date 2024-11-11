@@ -1,0 +1,109 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    background: #dbe5fa;
+    height: 100vh;
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+
+    color: #434343;
+    font-size: 16px;
+}
+
+main.cards {
+    margin: 10% 0% 50% 0% ;
+    display: flex;
+    flex-wrap: wrap; /* Permite que os cards se movam para a linha seguinte */
+    padding: 15px;
+    justify-content: space-between; /* Alinha os cards com espaçamento entre eles */
+    gap: 15px; /* Espaçamento entre os cards */
+}
+
+main.cards section.card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background: white;
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    max-height: 468px;
+    width: 30%; /* Agora, cada card ocupa 30% da largura, o que vai permitir 3 cards por linha */
+    box-sizing: border-box; /* Inclui o padding no cálculo da largura */
+}
+
+main.cards section.card .icon {
+    width: 64px;
+    height: 64px;
+}
+
+main.cards section.card img {
+    width: 100%;
+}
+
+main.cards section.card h3 {
+    font-size: 200%;
+    margin: 16px 0;
+}
+
+main.cards section.card span {
+    font-weight: 300;
+    max-width: 240px;
+    font-size: 80%;
+    margin-bottom: 16px;
+}
+
+a.button {
+    text-decoration: none;
+}
+
+main.cards section.card a.button {
+    padding: 0.5rem 1rem;
+    text-transform: uppercase;
+    border-radius: 32px;
+    border: 0;
+    cursor: pointer;
+    font-size: 80%;
+    font-weight: 500;
+    color: #fff;
+    margin-bottom: 16px 0;
+}
+
+main.cards section.card a.button {
+    background: linear-gradient(to right, #3E8AFF, #67b5ff);
+}
+
+main.cards section.card.relatorio a.button{
+    background: #FFC14F;
+}
+
+/* Estoque */
+
+/* Configuração do container principal */
+.container {
+    max-width: 1200px;
+    padding: 20px;
+    margin-top: 0 auto;
+}
+
+/* Responsividade para tablets e dispositivos médios */
+@media (max-width: 768px) {
+    main.cards section.card {
+        width: 48%; /* Em tablets, os cards ocupam cerca de 50% da largura */
+    }
+}
+
+/* Responsividade para dispositivos móveis */
+@media (max-width: 576px) {
+    main.cards section.card {
+        width: 100%; /* Em telas menores, os cards ocupam 100% da largura */
+    }
+}
