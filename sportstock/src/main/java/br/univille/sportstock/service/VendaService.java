@@ -10,5 +10,4 @@ public interface VendaService {
     void save(Venda venda);
 
     Venda findById(long id);
-
 }

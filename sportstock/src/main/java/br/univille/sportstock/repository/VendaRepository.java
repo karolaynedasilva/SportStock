@@ -5,7 +5,6 @@ import org.springframework.stereotype.Repository;
 import br.univille.sportstock.entity.Venda;
 
 @Repository
-public interface VendaRepository
-        extends JpaRepository<Venda, Long> {
+public interface VendaRepository extends JpaRepository<Venda, Long> {
 
 }

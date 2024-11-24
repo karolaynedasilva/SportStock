@@ -65,5 +65,9 @@ public class Venda {
     public void setListaItens(List<ItemVenda> listaItens) {
         this.listaItens = listaItens;
     }
-
+    public double calcularTotal() {
+        return listaItens.stream()
+                         .mapToDouble(item -> item.getQuantidade() * item.getValorVenda())
+                         .sum();
+    }
 }
