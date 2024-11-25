@@ -1,63 +1,32 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
-    <link rel="stylesheet" th:href="@{/css/style.css}">
-    <head th:include="layout :: head"></head> 
-        <nav th:replace="layout :: menu"></nav>
-    <body>
-    <main class="cards">
-        <section class="card funcionario">
-            <div class="icon">
-                <img src="/css/img/franquiado.png" alt="franquiado">
-            </div>
-            <h3>Cadastre um Franquiado</h3>
-            <span>Clique no botão para cadastrar um novo Franquiado</span>
-            <a href="/franquiados" class="button">Cadastre aqui</a>
-        </section>
+<html lang="en" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+<h1>Home</h1>
+<p>Área restrita para usuários logados. </p>
+<p>Bem vindo: <span sec:authentication="name"></span></p>
 
-        <section class="card produto">
-            <div class="icon">
-                <img src="/css/img/produtos.png" alt="produtos">
-            </div>
-            <h3>Cadastre um Produto</h3>
-            <span>Clique no botão para cadastrar um novo Produto</span>
-            <a href="/produtos" class="button">Cadastre aqui</a>
-        </section>
+<ol>
+    <li><a  th:href="@{/logout}">Deslogar</a></li>
+</ol>
+<div sec:authorize="isAuthenticated()">
+    Conteudo que somente é mostrado para usuários logados.
+</div>
 
-        <section class="card funcionario">
-            <div class="icon">
-                <img src="/css/img/funcionario.png" alt="funcionario">
-            </div>
-            <h3>Cadastre um Funcionário</h3>
-            <span>Clique no botão para cadastrar um novo Funcionário</span>
-            <a href="/funcionarios" class="button">Cadastre aqui</a>
-        </section>
+<div  sec:authorize="hasRole('ROLE_ADMIN')">
+    <p>usuário administrador está logado</p>
+</div>
+<div  sec:authorize="hasRole('ROLE_MANAGER')">
+    <p>usuário gerente está logado</p>
+</div>
 
-        <section class="card venda">
-            <div class="icon">
-                <img src="/css/img/venda.png" alt="vendas">
-            </div>
-            <h3>Cadastre uma nova Venda</h3>
-            <span>Clique no botão para cadastrar uma nova Venda</span>
-            <a href="/vendas" class="button">Cadastre aqui</a>
-        </section>
-        <section class="card estoque">
-            <div class="icon">
-                <img src="/css/img/estoque.png" alt="estoque">
-            </div>
-            <h3>Controle Geral</h3>
-            <span>Clique no botão para acessar o Controle Geral</span>
-            <a href="/estoque" class="button">Controle de Estoque</a>
-        </section>
-        <section class="card relatorio">
-            <div class="icon">
-                <img src="/css/img/relatorio.png" alt="relatorio">
-            </div>
-            <h3>Relatórios</h3>
-            <span>Clique no botão para acessar os relatórios</span>
-            <a href="/relatorios/vendas" class="button" id="btn-relatorio">Acesse aqui</a>
-        </section>
-    </main>
-    <footer th:include="layout :: footer"></footer>
-    </body>
+<div  sec:authorize="hasRole('ROLE_USER')">
+    <p>usuário comum está logado</p>
+</div>
+
+</body>
 </html>
-

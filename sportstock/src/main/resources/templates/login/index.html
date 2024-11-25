@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tela de Login</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+<h1>Tela de Login</h1>
+<p>Faça o seu login.</p>
+<form th:action="@{/login}" method="post" th:object="${user}">
+    <input type="text" name="username" id="username" placeholder="username">
+    <input type="password" name="password" id="password" placeholder="password">
+    <button type="submit">Login</button>
+</form>
+<div th:if="${param.error}">Usuário ou senha incorretos</div>
+</body>
+</html>

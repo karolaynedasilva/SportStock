@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <meta charset="UTF-8">
+    <title>Tela inicial do Sistema</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+<h1>Tela inicial do Sistema</h1>
+<p>Não precisa estar logado para acessar esta página.</p>
+<ol>
+    <li><a  th:href="@{/login}">Ir para o login</a></li>
+</ol>
+<div sec:authorize="isAuthenticated()">
+    Conteudo que somente é mostrado para usuários logados.
+</div>
+</body>
+</html>
